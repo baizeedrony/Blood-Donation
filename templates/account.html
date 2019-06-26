@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="content-section">
+	<div class="media">
+		<img class="rounded-circle account-img" src="cat.jpg">
+		<div class="media-body">
+			<h2 class="account-heading">{{ session.username }}</h2>
+			<p class="text-secondary">{{ session.email }}</p>
+		</div>
+	</div>
+	<!--FORM HERE -->
+</div>
+{% endblock %}

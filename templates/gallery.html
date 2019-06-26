@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{vimage_name}}
+
+{% for v_name in vimage_name %}
+
+{{ <img src="{{url_for('send_image', file_name=image_name)}}"> }}
+
+{% endfor %}
+
+</body>
+</html>

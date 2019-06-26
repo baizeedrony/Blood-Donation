@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+<body>
+    {% include 'includes/_navbar.html' %}
+ <div class="container">
+    {% include 'includes/_messages.html' %}
+    {% block body %}{% endblock %}
+ </div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"> </script>
+<script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("editor")
+    </script>
+</body>
+</html>
