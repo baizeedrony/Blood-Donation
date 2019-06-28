@@ -5,7 +5,7 @@ import app as app
 from flask import Flask, render_template, flash, request,redirect,url_for,session,logging
 # from data import Articles
 # Articles=Articles()
-from wtforms import Form, StringField, TextAreaField, validators, PasswordField, BooleanField
+from wtforms import Form, StringField, TextAreaField, validators, PasswordField, BooleanField, DateField
 from passlib.hash import sha256_crypt
 from functools import wraps
 from flask_mail import Mail, Message
@@ -43,6 +43,9 @@ class RegistrationForm(Form):
 
     name = StringField('name', [validators.Length(min=4, max=25)])
     username = StringField('Username', [validators.Length(min=4, max=25)])
+    mothersname = StringField('mothers name', [validators.Length(min=4, max=25)])
+    phone = StringField('Mobile No:')
+    bloodgroup = StringField('blood group')
     email = StringField('Email Address', [validators.Length(min=6, max=35)])
     password = PasswordField('New Password', [
         validators.DataRequired(),
@@ -71,10 +74,10 @@ def articles():
     articles = cur.fetchall()
     # data = cur.fetchone()
     if result.rowcount > 0:
-        return render_template('articles.html',articles=articles )
+        return render_template('articles.html', articles=articles)
     else:
         msg = ('no articles')
-        return render_template('articles.html', msg = msg)
+        return render_template('articles.html', msg=msg)
     # return render_template("articles.html", articles = Articles)
 
 
@@ -86,27 +89,31 @@ def article(id):
         cur.execute("select * from articles where id='{}'".format(id))
         article = cur.fetchone()
 
-        return render_template('article.html',article=article)
+        return render_template('article.html', article=article)
 
 
 # User Register
-@app.route('/register', methods=['GET','POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     print(request.form)
     form_response = RegistrationForm(request.form)
     if request.method == 'POST' and form_response.validate():
         name = form_response.name.data
         username = form_response.username.data
+        mothersname = form_response.mothersname.data
+        phone = form_response.phone.data
         email = form_response.email.data
+        bloodgroup = form_response.bloodgroup.data
         password = sha256_crypt.encrypt(str(form_response.password.data))
         cur = con.cursor()
         # https://learncodeshare.net/2015/06/26/insert-crud-using-cx_oracle/ inserting documentations
-        cur.execute("INSERT INTO users (name, username, email, password) VALUES (\'{}\',\'{}\', \'{}\', \'{}\')".
-            format(name, username, email, password))
+        cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, password)"
+                    " VALUES (\'{}\',\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')".
+                    format(name, username, mothersname, phone, email, bloodgroup, password))
         con.commit()
 
         # return "<h1>You are now registered</h1>"
-        flash("you are now registered","success")
+        flash("you are now registered", "success")
         return redirect(url_for("login"))
 
         # return render_template('register.html')
@@ -114,7 +121,7 @@ def register():
 
 
 # user login
-@app.route('/login', methods = ['GET','POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         # get forms field
@@ -133,7 +140,8 @@ def login():
                 session['logged_in'] = True
                 session['username'] = username
                 flash('you are logged in,success')
-                return redirect(url_for('dashboard')) #if user logged in then it will go to another page dashboard
+                return redirect(url_for('dashboard'))
+                # if user logged in then it will go to another page dashboard
                 app.logger.info('password matched')
                 return "<h1>password matched</h1>"
             else:
@@ -177,10 +185,10 @@ def dashboard():
 
     # data = cur.fetchone()
     if result.rowcount > 0:
-        return render_template('dashboard.html',articles=articles )
+        return render_template('dashboard.html', articles=articles)
     else:
         msg = ('no articles found')
-        return render_template('dashboard.html', msg = msg)
+        return render_template('dashboard.html', msg=msg)
 
 
 class ArticleForm(Form):
@@ -283,11 +291,11 @@ def user_list():
 
 
 # image uploading
-@app.route('/upload', methods =['POST','GET'])
+@app.route('/upload', methods=['POST', 'GET'])
 def upload():
     if request.method == 'GET':
         return render_template('upload.html')#
-    if request.method== 'POST':
+    if request.method == 'POST':
         target = os.path.join(APP_ROOT, 'images')
         if not os.path.isdir(target):
             os.mkdir(target)
@@ -298,8 +306,8 @@ def upload():
         upload_file.save(os.path.join(target, upload_file.filename))
         flash('file uploaded successfully')
 
-        return render_template('upload.html')
-        #return render_template('complete.html', image_name=filename)
+        return render_template('register.html')
+        # return render_template('complete.html', image_name=filename)
 
     '''
     for file in request.files.getlist('file'):

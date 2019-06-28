@@ -9,22 +9,23 @@
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Username</th>
+        <th>Blood Group </th>
+        <th> Phone </th>
        <!-- <th>Password</th>-->
-        <th>register_date</th>
-        <th>Picture</th>
+      <!--  <th>register_date</th>
+        <th>Picture</th> -->
         <th></th>
         <th></th>
     </tr>
     {% for user in users %}
-    <>
         <td>{{user[0]}}</td>
         <td>{{user[1]}}</td>
-        <td>{{user[2]}}</td>
-        <td>{{user[3]}}</td>
-        <!--<td>{{user[4]}}</td>-->
         <td>{{user[5]}}</td>
-        <<td><img src="/static/images/cat.jpg" alt="Related Book 2" width="20%" height="auto"></td>
+        <td>{{user[6]}}</td>
+        <td>{{user[4]}}</td>
+        <!--<td>{{user[4]}}</td>-->
+       <!-- <td>{{user[5]}}</td> -->
+       <!-- <<td><img src="/static/images/cat.jpg" alt="Related Book 2" width="20%" height="auto"></td> -->
        <!-- <td>{{request.files[file]}}</td>-->
     </tr>
     {% endfor %}
