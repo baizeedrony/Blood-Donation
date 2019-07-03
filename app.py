@@ -111,7 +111,6 @@ def register():
                     " VALUES (\'{}\',\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')".
                     format(name, username, mothersname, phone, email, bloodgroup, password))
         con.commit()
-
         # return "<h1>You are now registered</h1>"
         flash("you are now registered", "success")
         return redirect(url_for("login"))

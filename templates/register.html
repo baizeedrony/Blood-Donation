@@ -4,7 +4,7 @@
   <h1> Become a Member </h1>
 {% from "includes/_formhelpers.html" import render_field %}
 <!---<form method="POST" action="">-->
-<form class =method="POST">
+<form method="POST">
     <!--enctype="multipart/form-data" action="{{ url_for('upload')}}"-->
      <div class="form-group">
         {{render_field(form.name, class_="form-control")}}
@@ -44,8 +44,8 @@
         <input type="file" name="file" accept="image/*">
     </div>-->
 
-
-    <p><input type="submit" color = "red" class="btn btn-secondary" value="submit"> </p>
+    <p><input type="submit"class="btn btn-secondary" value="submit/send"> </p>
 </form>
-</div>
 {% endblock %}
+
+
