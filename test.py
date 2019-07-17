@@ -1,4 +1,4 @@
-'''class Rectangel():
+class Rectangel():
     def __init__(self,w,h):
         self.w = w
         self.h = h
@@ -10,15 +10,7 @@
         return 2 * (self.w+self.h)
 
 
-class square(Rectangel):'''
-
-
-mytupple = ('mango','apple','banana','lichi','jackfruit','goava')
-
-myit = iter(mytupple)
-
-print(next(myit))
-print(next(myit))
-print(next(myit))
-print(next(myit))
-print(next(myit))
+class square(Rectangel):
+    def __init__(self, s):
+        super(square, self).__init__(s,s)
+        self.s = s
