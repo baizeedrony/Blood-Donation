@@ -52,6 +52,7 @@ class RegistrationForm(Form):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
+    #image = ('upload')
     # accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
 
 
@@ -105,6 +106,7 @@ def register():
         email = form_response.email.data
         bloodgroup = form_response.bloodgroup.data
         password = sha256_crypt.encrypt(str(form_response.password.data))
+        #image = form_response.image.data
         cur = con.cursor()
         # https://learncodeshare.net/2015/06/26/insert-crud-using-cx_oracle/ inserting documentations
         cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, password)"
@@ -197,7 +199,7 @@ class ArticleForm(Form):
 
 
 # add article
-@app.route('/add_article',methods =['POST','GET'])
+@app.route('/add_article', methods =['POST','GET'])
 @is_logged_in
 def add_article():
     form = ArticleForm(request.form)
@@ -349,14 +351,13 @@ def message(receiver):
 
 '''@app.route('/upload/<filename>')
 def send_image(filename):
-    return send_from_directory("images", filename)
+    return send_from_directory("images", filename)'''
 
 
 @app.route('/gallery')
 def get_gallery():
     image_name = os.listdir('./images')
-    print(image_name)
-    return render_template('gallery.html', vimage_name=image_name)'''
+    return render_template('gallery.html', vimage_name=image_name)
 
 
 if __name__ == '__main__':
