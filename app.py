@@ -5,7 +5,10 @@ import app as app
 from flask import Flask, render_template, flash, request,redirect,url_for,session,logging
 # from data import Articles
 # Articles=Articles()
-from wtforms import Form, StringField, TextAreaField, validators, PasswordField, BooleanField, DateField
+# For seraching category
+from app import app
+
+from wtforms import Form, StringField, TextAreaField, validators, PasswordField, BooleanField, DateField, SelectField
 from passlib.hash import sha256_crypt
 from functools import wraps
 from flask_mail import Mail, Message
@@ -59,7 +62,6 @@ class RegistrationForm(Form):
 @app.route('/')
 def index():
     return render_template("home.html")
-
 
 # About
 @app.route('/about')
@@ -255,7 +257,7 @@ def edit_article(id):
 
         flash("Articles updated successfully")
         return redirect(url_for('dashboard'))
-    return render_template('edit_article.html',form=form)
+    return render_template('edit_article.html', form=form)
 
 
 # Delete Article
@@ -360,7 +362,37 @@ def get_gallery():
     return render_template('gallery.html', vimage_name=image_name)
 
 
+class searchblood(Form):
+    choices = [('bloodgroup','bloodgroup')]
+    select = SelectField('search for bloodgroup:',choices = choices)
+    search = StringField('')
+
+
+@app.route('/searchform', methods=['GET', 'POST'])
+def searchform():
+    search = searchblood(request.form)
+    if request.method == 'POST':
+        return search_results(search)
+    return render_template('searchform.html', form=search)
+
+
+@app.route('/results')
+def search_results(search):
+    users = []
+    search_string = search.data['search']
+    if search.data['search'] == '':
+        cur = con.cursor()
+        result = cur.execute('select * from users')
+        users = cur.fetchall()
+
+    if not result:
+        flash('No results found!')
+        return redirect('searchform.html')
+    else:
+        # display results
+        return render_template('results.html', results=result)
+
+
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.run(debug=True)
-
