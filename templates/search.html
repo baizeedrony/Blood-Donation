@@ -1,0 +1,26 @@
+<doctype html>
+    <head>
+        <title>Flask Blood Donation Database</title>
+    </head>
+    <h2> Flask Blood Donation Database</h2>
+
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form method="post">
+        <dl>
+            {{ render_field(form.select) }}
+                {{ render_field(form.search) }}
+            <input type="submit" value="search">
+
+        </dl>
+    </form>
+</doctype>

@@ -1,23 +1,23 @@
-<doctype html>
-<head>
-    <title>Flask Music Database</title>
-</head>
-<h2>Flask Music Database</h2>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
+{% extends 'layout.html' %}
+
+{% block body %}
+<hr>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Blood Group </th>
+        <th> Phone </th>
+    </tr>
+    {% for result in results %}
+        <td>{{result[0]}}</td>
+        <td>{{result[1]}}</td>
+        <td>{{result[5]}}</td>
+        <td>{{result[6]}}</td>
+        <td>{{result[4]}}</td>
+    </tr>
     {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-{% from "_formhelpers.html" import render_field %}
-<form method=post>
-  <dl>
-    {{ render_field(form.select) }}
-    <p>
-    {{ render_field(form.search) }}
-  </dl>
-  <p><input type=submit value=Search>
-</form>
+
+</table>
+{% endblock %}

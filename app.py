@@ -361,36 +361,42 @@ def get_gallery():
     image_name = os.listdir('./images')
     return render_template('gallery.html', vimage_name=image_name)
 
+# Search Class
+class SearchForm(Form):
+    choices=[('bloodgroup','bloodgroup')]
+    select=SelectField('Search For Blood', choices=choices)
+    search=StringField('')
 
-class searchblood(Form):
-    choices = [('bloodgroup','bloodgroup')]
-    select = SelectField('search for bloodgroup:',choices = choices)
-    search = StringField('')
 
-
-@app.route('/searchform', methods=['GET', 'POST'])
-def searchform():
-    search = searchblood(request.form)
-    if request.method == 'POST':
+#Search Items
+@app.route('/search', methods=['GET', 'POST'])
+#create_cursor
+def search():
+    search=SearchForm(request.form)
+    if request.method=='POST':
+        print(request.data)
         return search_results(search)
-    return render_template('searchform.html', form=search)
+    return render_template('search.html', form=search)
 
 
 @app.route('/results')
 def search_results(search):
-    users = []
     search_string = search.data['search']
-    if search.data['search'] == '':
-        cur = con.cursor()
-        result = cur.execute('select * from users')
-        users = cur.fetchall()
+    if search_string:
+        if search.data['select'] == 'bloodgroup':
+            cur =con.cursor()
+        cur.execute('''select * from users where bloodgroup=:bloodgroup''', bloodgroup=search_string)
+        results =cur.fetchall()
+        print(results)
+        from pprint import pprint
+        pprint(results)
+        print(len(results))
 
-    if not result:
-        flash('No results found!')
-        return redirect('searchform.html')
+    if not results:
+        flash('No results found!ha ha ha')
+        return redirect('search.html')
     else:
-        # display results
-        return render_template('results.html', results=result)
+        return render_template('results.html', results=results)
 
 
 if __name__ == '__main__':
