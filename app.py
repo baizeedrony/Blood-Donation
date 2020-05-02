@@ -297,7 +297,7 @@ def user_list():
 @app.route('/upload', methods=['POST', 'GET'])
 def upload():
     if request.method == 'GET':
-        return render_template('upload.html')#
+        return render_template('upload.html')
     if request.method == 'POST':
         target = os.path.join(APP_ROOT, 'images')
         if not os.path.isdir(target):
@@ -309,7 +309,7 @@ def upload():
         upload_file.save(os.path.join(target, upload_file.filename))
         flash('file uploaded successfully')
 
-        return render_template('register.html')
+        return render_template('upload.html')
         # return render_template('complete.html', image_name=filename)
 
     '''
