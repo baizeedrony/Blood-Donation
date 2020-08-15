@@ -2,7 +2,7 @@
 # from email.policy import default
 # import default as default
 import app as app
-from flask import Flask, render_template, flash, request,redirect,url_for,session,logging
+from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory
 # from data import Articles
 # Articles=Articles()
 # For seraching category
@@ -293,7 +293,27 @@ def user_list():
         return render_template('user_list.html', msg = msg)
 
 
-# image uploading
+# Old system of  image uploading
+'''@app.route('/upload', methods=['POST', 'GET'])
+def upload():
+    if request.method == 'GET':
+        return render_template('upload.html')
+    if request.method == 'POST':
+        target = os.path.join(APP_ROOT, 'images/')
+        if not os.path.isdir(target):
+            os.mkdir(target)
+        if 'file' not in request.files:
+            flash("No file")
+            return render_template('upload.html')
+        upload_file = request.files['file']
+        upload_file.save(os.path.join(target, upload_file.filename))
+        flash('file uploaded successfully')
+
+        return render_template('upload.html')
+        # return render_template('complete.html', image_name=filename)'''
+
+
+# New system of  purpose image handling
 @app.route('/upload', methods=['POST', 'GET'])
 def upload():
     if request.method == 'GET':
@@ -305,28 +325,32 @@ def upload():
         if 'file' not in request.files:
             flash("No file")
             return render_template('upload.html')
-        upload_file = request.files['file']
-        upload_file.save(os.path.join(target, upload_file.filename))
+        filename = request.files['file']
+        filename.save(os.path.join(target, filename.filename))
         flash('file uploaded successfully')
 
-        return render_template('upload.html')
+        return render_template('upload.html',image_name=filename)
         # return render_template('complete.html', image_name=filename)
+print(upload)
 
-    '''
-    for file in request.files.getlist('file'):
-        print(file)
-        filename = file.filename
-        destination = '/'.join([target.filename])
-        print(destination)
-        file.save(destination)
-        return render_template('complete.html')
-    '''
+@app.route('/upload/<filename>')
+def send_image(filename):
+    return send_from_directory("images",filename)
+print(send_image)
 
 
+@app.route('/gallery')
+def get_gallery():
+    image_names = os.listdir('./images')
+    return render_template('gallery.html', image_names=image_names)
+print(get_gallery)
+
+'''
 @app.route('/account')
 def account():
     image_file = url_for('images', file_name='cat.jpg')
     return render_template('account.html')
+'''
 
 
 # Mail form class
@@ -356,10 +380,7 @@ def send_image(filename):
     return send_from_directory("images", filename)'''
 
 
-@app.route('/gallery')
-def get_gallery():
-    image_name = os.listdir('./images')
-    return render_template('gallery.html', vimage_name=image_name)
+
 
 # Search Class
 class SearchForm(Form):
