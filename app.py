@@ -55,7 +55,7 @@ class RegistrationForm(Form):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
-    #image = ('upload')
+    # image = ('upload')
     # accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
 
 
@@ -108,7 +108,7 @@ def register():
         email = form_response.email.data
         bloodgroup = form_response.bloodgroup.data
         password = sha256_crypt.encrypt(str(form_response.password.data))
-        #image = form_response.image.data
+        # image = form_response.image.data
         cur = con.cursor()
         # https://learncodeshare.net/2015/06/26/insert-crud-using-cx_oracle/ inserting documentations
         cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, password)"
@@ -252,7 +252,7 @@ def edit_article(id):
         cur = con.cursor()
 
         # Execute
-        cur.execute("update articles set title='{}',body='{}' where id='{}'".format(title,body,id))
+        cur.execute("update articles set title='{}',body='{}' where id='{}'".format(title, body, id))
         con.commit()
 
         flash("Articles updated successfully")
@@ -261,7 +261,7 @@ def edit_article(id):
 
 
 # Delete Article
-@app.route('/delete_article/<string:id>',methods = ['post'])
+@app.route('/delete_article/<string:id>', methods=['post'])
 def delete_article(id):
 
         # create cursor
@@ -318,6 +318,8 @@ def upload():
 def upload():
     if request.method == 'GET':
         return render_template('upload.html')
+
+
     if request.method == 'POST':
         target = os.path.join(APP_ROOT, 'images')
         if not os.path.isdir(target):
