@@ -79,7 +79,7 @@ def articles():
     if result.rowcount > 0:
         return render_template('articles.html', articles=articles)
     else:
-        msg = ('no articles')
+        msg = ('No articles')
         return render_template('articles.html', msg=msg)
     # return render_template("articles.html", articles = Articles)
 
