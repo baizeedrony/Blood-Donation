@@ -50,6 +50,7 @@ class RegistrationForm(Form):
     phone = StringField('Mobile No:')
     bloodgroup = StringField('blood group')
     email = StringField('Email Address', [validators.Length(min=6, max=35)])
+    district = StringField('District')
     password = PasswordField('New Password', [
         validators.DataRequired(),
         validators.EqualTo('confirm', message='Passwords must match')
@@ -107,13 +108,14 @@ def register():
         phone = form_response.phone.data
         email = form_response.email.data
         bloodgroup = form_response.bloodgroup.data
+        district = form_response.district.data
         password = sha256_crypt.encrypt(str(form_response.password.data))
         # image = form_response.image.data
         cur = con.cursor()
         # https://learncodeshare.net/2015/06/26/insert-crud-using-cx_oracle/ inserting documentations
-        cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, password)"
-                    " VALUES (\'{}\',\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')".
-                    format(name, username, mothersname, phone, email, bloodgroup, password))
+        cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, DISTRICT,password)"
+                    " VALUES (\'{}\',\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')".
+                    format(name, username, mothersname, phone, email, bloodgroup, district,password))
         con.commit()
         # return "<h1>You are now registered</h1>"
         flash("you are now registered", "success")
