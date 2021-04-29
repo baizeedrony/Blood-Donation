@@ -15,6 +15,7 @@ from flask_mail import Mail, Message
 import cx_Oracle
 import os
 con = cx_Oracle.connect('doner/doner@localhost/Orcl')
+#con = cx_Oracle.connect('oriondb/o@118.67.215.114/Orcl')
 
 
 print(con.version)
