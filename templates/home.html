@@ -1,8 +1,16 @@
 {% extends 'layout.html' %}
 {% block body %}
- <div class="jumbotron text-center">
+<style>
+
+
+    body {
+    background-image:url({{url_for('static',filename='images.jpg')}});
+    }
+</style>
+<img src="/images">
+ <div class="jumbotron text-center" style="style="background:red ;position:relative;width :400px;margin:auto"">
   <h1 style="color:RED"> <b>Are You ready to donate blood? please Register.</b> </h1>
-  <p class="lead" style="color:green"> From this website we can search blood doner </p>
+  <p class="lead" > From this website we can search blood doner </p>
 
 
 

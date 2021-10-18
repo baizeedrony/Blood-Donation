@@ -52,9 +52,9 @@ def validate_and_execute():
     #else:
         print("The entered value is not a number,so don't ruin my programme")
 
-
-user_input = input("Enter a number of days and I will convert it in to seconds: \n")
-# input function is holded user_input variable  #string input
-validate_and_execute()
+while True:
+    user_input = input("Enter a number of days and I will convert it in to seconds: \n")
+    # input function is holded user_input variable  #string input
+    validate_and_execute()
 
 

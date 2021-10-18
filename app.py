@@ -56,7 +56,7 @@ class RegistrationForm(Form):
         validators.DataRequired(),
         validators.EqualTo('confirm', message='Passwords must match')
     ])
-    confirm = PasswordField('Repeat Password')
+    confirm = PasswordField('Rpt Password')
     # image = ('upload')
     # accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
 
