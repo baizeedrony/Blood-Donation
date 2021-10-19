@@ -100,7 +100,7 @@ def article(id):
 # User Register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    print(request.form)
+    #print(request.form)
     form_response = RegistrationForm(request.form)
     if request.method == 'POST' and form_response.validate():
         name = form_response.name.data
@@ -115,8 +115,15 @@ def register():
         cur = con.cursor()
         # https://learncodeshare.net/2015/06/26/insert-crud-using-cx_oracle/ inserting documentations
         cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, DISTRICT,password)"
-                    " VALUES (\'{}\',\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')".
-                    format(name, username, mothersname, phone, email, bloodgroup, district,password))
+                    " VALUES (:name, :username, :mothersname, :phone, :email, :bloodgroup, :district,:password)",
+                    (name, username, mothersname, phone, email, bloodgroup, district,password))
+        # alternate code
+        #cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, DISTRICT,password)"
+                    #" VALUES (\'{}\',\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')".
+                   # format(name, username, mothersname, phone, email, bloodgroup, district, password))
+
+
+
         con.commit()
         # return "<h1>You are now registered</h1>"
         flash("you are now registered", "success")
