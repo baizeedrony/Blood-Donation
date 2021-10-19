@@ -287,7 +287,7 @@ def user_list():
     users = cur.fetchall()
     directory = os.path.join(APP_ROOT, 'images')
     image_path = os.path.join(directory, 'cat.jpg')
-    print(image_path)
+    # print(image_path)
     # data = cur.fetchone()
     if result.rowcount > 0:
         return render_template('user_list.html',users= users, user_image =image_path)
