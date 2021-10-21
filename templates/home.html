@@ -7,15 +7,18 @@
     background-image:url({{url_for('static',filename='home.jpg')}});
      background-repeat: no-repeat;
      background-size: cover;
+
+
     }
 
 
 </style>
 
 
- <div class="jumbotron text-center" style="background-color: rgba(255, 99, 71, 0.2); position:relative;width :1000px;height:auto;margin:auto">
-  <h1 style="color:RED"> <b>Are You ready to donate blood? please Register.</b> </h1>
-  <p class="lead" > From this website we can search blood doner </p>
+ <div class="jumbotron text-left" style="background-color: rgba(255, 99, 71, 0.2); position: absolute;  left: 8px;
+width :1000px;height:auto;margin:auto">
+  <h1 style="color:#660000"> <b>Emergency Blood and Platelet Shortage <br> Please Register.</b> </h1>
+  <p class="lead" style="color:black" > From this website we can search blood doner </p>
 
 
 
@@ -25,5 +28,7 @@
   {% endif %}
 
  </div>
+
+
 {% endblock %}
 
