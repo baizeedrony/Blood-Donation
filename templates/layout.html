@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
+
 <head>
 
     <title>My Flask App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+   <!--  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">//-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
+
+
+
 <body>
     {% include 'includes/_navbar.html' %}
- <div class="container">
+
+ <div class="container"  style="height: auto;">
     {% include 'includes/_messages.html' %}
     {% block body %}{% endblock %}
  </div>
+
+
+
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"> </script>
 <script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
@@ -18,4 +27,6 @@
         CKEDITOR.replace("editor")
     </script>
 </body>
+
+
 </html>

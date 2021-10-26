@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 {% block body %}
+<div class="center"style="background-color: rgba(255, 99, 71, 0.1); position:relative;width :1000px;height:auto;margin:auto"">
 
-
-<form method="POST" enctype="multipart/form-data" action="{{ url_for('upload')}}">
-    <div class="form-group" style="">
-        <input type="file" name="file" accept="image/*">
-        <input type="submit" value="send">
-    </div>
-</form>
-
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload')}}">
+        <div class="form-group" style="">
+            <input type="file" name="file" accept="image/*">
+            <input type="submit" value="send">
+        </div>
+    </form>
+</div>
 
 {% endblock %}
