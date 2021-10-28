@@ -1,0 +1,34 @@
+#container {
+    border: 2px dashed #444;
+    height: 125px;
+
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+
+    /* just for demo */
+    min-width: 612px;
+}
+
+.box1, .box2, .box3 {
+    width: 150px;
+    height: 125px;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1
+}
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
+/* just for demo */
+.box1, .box3 {
+    background: #ccc
+}
+.box2 {
+    background: #0ff
+}

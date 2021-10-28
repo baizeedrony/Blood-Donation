@@ -8,50 +8,148 @@
     }
 
 
+
+
 </style>
 
+<div>
+    <div class="jumbotron text-left" style="background-color: rgba(255, 99, 71, 0.2); position: absolute;  left: 0px;right: 0px;
+width :1350px;height:100%;margin:auto ; border: 1px solid white ; padding: 5px;background-image:url({{url_for('static',filename='blood.jpg')}})">
+        <h1 style="color:#660000"><b>Emergency Blood and Platelet Shortage <br> Please Register.</b></h1>
+        <p class="lead" style="color:black"> From this website we can search blood doner </p>
 
-<div class="jumbotron text-left" style="background-color: rgba(255, 99, 71, 0.2); position: absolute;  left: 0px;right: 0px;
-width :1200px;height:inherit;margin:auto ;  background-image:url({{url_for('static',filename='blood.jpg')}})">
-    <h1 style="color:#660000"><b>Emergency Blood and Platelet Shortage <br> Please Register.</b></h1>
-    <p class="lead" style="color:black"> From this website we can search blood doner </p>
-
-    {% if session.logged_in == NULL %}
-    <a href="register" class="btn btn-primary btn-lg">Register</a>
-    <a href="login" class="btn btn-success btn-lg">Login</a>
-    {% endif %}
-
-
-    <div class="jumbotron text-left" style="background-color:white; position: absolute;  left: 0px;right: 0px;
-width :auto;height:inherit;margin:auto;margin-top: 30px;">
-        <h2 style="font-weight:bold;color:red">Your Donation Is Urgently Needed</h2>
-        <p class="lead" style="color:black" align="justify"> Come give blood in October and receive a free Zaxby’s®
-            Signature Sandwich reward or get a $5 e-gift card. Plus, get double the thank-you with an extra $5 e-gift
-            card when you come to give in October!. </p>
+        {% if session.logged_in == NULL %}
+        <a href="register" class="btn btn-primary btn-lg">Register</a>
+        <a href="login" class="btn btn-success btn-lg">Login</a>
+        {% endif %}
 
 
-        <div class="jumbotron text-left" style="background-color:#2788d8; position: absolute;  left: 2px;right: 2px;
-width :auto;height:inherit;margin:auto;margin-top: 30px;">
+        <div class="jumbotron text-left" style="background-color:white; position: absolute;  left: 0px;right: 0px;
+width :1350px;height:inherit;margin:auto;margin-top: 30px;border: 1px solid white; padding: 5px;">
+            <h2 style="font-weight:bold;color:red">Your Donation Is Urgently Needed</h2>
+            <p class="lead" style="color:black" align="justify"> Come give blood in October and receive a free Zaxby’s®
+                Signature Sandwich reward or get a $5 e-gift card. Plus, get double the thank-you with an extra $5
+                e-gift
+                card when you come to give in October!. </p>
+            <br>
 
-            <p class="lead" style="color:black" align="justify">You may still donate blood,
-                platelets or plasma after receiving a COVID-19 vaccine. Knowing the name of the manufacturer of the
-                vaccine is important in determining your blood donation eligibility.
-                To learn more about the COVID-19 vaccine and blood donation, </p>
+            <div class="jumbotron text-left" style="background-color:#2788d8; position: absolute;  left: 0px;right: 0px;
+width :1350px;height:inherit;margin:auto;margin-top: 30px;border: 1px solid white;box-sizing: border-box;padding: 5px; ">
+
+                <p class="lead" style="color:black" align="justify">You may still donate blood,
+                    platelets or plasma after receiving a COVID-19 vaccine. Knowing the name of the manufacturer of the
+                    vaccine is important in determining your blood donation eligibility.
+                    To learn more about the COVID-19 vaccine and blood donation, </p>
 
 
-            <div class="jumbotron text-left" style="background-color:white; position: absolute;  left: 2px;right: 2px;
-width :auto;height:inherit ;margin:auto;margin-top: 30px; ">
-                <div class="col" style="border: 1px solid blue;width :500px;height:350px;">
-                        <div class="col"
-                     style="color:black;background-image:url({{url_for('static',filename='laptop.jpg')}})">
+                <div class="justify-content-center" style="background-color:white; position: absolute;
+         left: 0px;right: 0px;
+width :1350px;height:inherit ;margin:auto;margin-top: 30px;border: 1px solid white; ">
+
+
+                    <div class="card-group">
+                        <div class="card">
+                            <img class="card-img-top"
+                                 style="background-image:url({{url_for('static',filename='card.jpg')}});height:289px;width:400px">
+                            <div class="card-body">
+                                <h3 class="card-title">Start Your RapidPass</h3>
+                                <p class="card-text">Donating blood today? Complete your pre-reading and health history
+                                    questions online using any device, before visiting your blood drive location..</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top"
+                                 style="background-image:url({{url_for('static',filename='card.jpg')}});height:289px;width:400px">
+                            <div class="card-body">
+                                <h3 class="card-title">Am I Eligible to Donate Blood?</h3>
+                                <p class="card-text">Are you eligible for blood donation? Find out about the eligibility
+                                    requirements to donate
+                                    blood today. Learn about general health, travel, medications, tattoos, and
+                                    more..</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top"
+                                 style="background-image:url({{url_for('static',filename='blood.jpg')}});height:289px;width:400px">
+                            <div class="card-body">
+                                <h3 class="card-title">Help Sickle Cell Patients</h3>
+                                <p class="card-text">Blood donors who are Black play a critical role in
+                                    helping sickle cell disease patients receive the most compatible blood match. Donors
+                                    needed to meet this urgent need.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!section-->
+
+
+                    <div class="justify-content-center" style="background-color:white; position: absolute;
+         left: 0px;right: 0px;padding: 5px;
+width :1350px;height:inherit ;margin:auto;margin-top: 30px;border-radius: 50px 20px; ">
+
+
+                        <div class="card-group">
+                            <div class="card">
+                                <img class="card-img-top"
+                                     style="background-image:url({{url_for('static',filename='card.jpg')}});height:289px;width:400px">
+                                <div class="card-body">
+                                    <h3 class="card-title">Start Your RapidPass</h3>
+                                    <p class="card-text">Donating blood today? Complete your pre-reading and health
+                                        history questions online using any device, before visiting your blood drive
+                                        location..</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top"
+                                     style="background-image:url({{url_for('static',filename='card.jpg')}});height:289px;width:400px">
+                                <div class="card-body">
+                                    <h3 class="card-title">Am I Eligible to Donate Blood?</h3>
+                                    <p class="card-text">Are you eligible for blood donation? Find out about the
+                                        eligibility requirements to donate
+                                        blood today. Learn about general health, travel, medications, tattoos, and
+                                        more..</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top"
+                                     style="background-image:url({{url_for('static',filename='blood.jpg')}});height:289px;width:400px">
+                                <div class="card-body">
+                                    <h3 class="card-title">Help Sickle Cell Patients</h3>
+                                    <p class="card-text">Blood donors who are Black play a critical role in
+                                        helping sickle cell disease patients receive the most compatible blood match.
+                                        Donors needed to meet this urgent need.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="jumbotron text-left" style="background-color: rgba(255, 99, 71, 0.2); position: absolute;  left: 0px;right: 0px;
+width :1350px;height:100%;margin:auto ; border: 1px solid white ; background-image:url({{url_for('static',filename='save image.jpg')}});padding: 10px;">
+                            <h1 style="color:#660000;text-align:left"><b>Platelet Donors Help Patients <br> Please
+                                Register.</b>
+                            </h1>
+                            <p class="lead" style="color:black"> Help patients like Braylan by donating </p>
 
                         </div>
-                        <div class="title">Start Your RapidPass</></div>
-                </div>
-            </div>
-
-        </div>
 
 
 
-        {% endblock %}
+                        {% endblock %}
