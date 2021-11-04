@@ -436,6 +436,7 @@ def search_results(search):
     else:
         return render_template('results.html', results=results)
 
+ 
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
