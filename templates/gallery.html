@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>YouFrame</title>
+    <title>Gallery</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -58,10 +58,15 @@ border-bottom-right-radius: 10px;padding:10px ;">
 
     {% for image_name in image_names %}
 
+     {% if ('png' in image_name) or ('jpg' in image_name) or ('jpeg' in image_name) %}
+
 <div>
         <div class="column">
             <img src="{{url_for('send_image', filename=image_name)}}" alt="image_name" style="width:100%">
+            {% print(image_name.split("/gallery")[0][:20]) %}
         </div>
+
+     {% endif %}
         {% endfor %}
     </div>
     </div>
