@@ -1,3 +1,23 @@
+from flask import Response, Flask, render_template
+import threading
+import argparse
+import datetime, time
+import imutils
+import cv2
+
+outputFrame = None
+lock = threading.Lock()
+app = Flask(__name__)
+
+
+
+
+
+
+
+
+
+
 """
 class user:
     name = ''
@@ -28,11 +48,13 @@ class user:
 
     def profile(self):
     """
+'''
 # print("20 days are " +str(50) +" minutes")
 calculation_to_seconds = 24*60*60
 name_of_units = 'seconds'
+'''
 
-
+'''
 def to_convert_units(number_of_days):  # like 20 number input value.
     return (f"{number_of_days}days are {number_of_days*calculation_to_seconds} {name_of_units}")
 
@@ -56,5 +78,7 @@ while True:
     user_input = input("Enter a number of days and I will convert it in to seconds: \n")
     # input function is holded user_input variable  #string input
     validate_and_execute()
+'''
+
 
 
