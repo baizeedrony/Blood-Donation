@@ -65,10 +65,6 @@ class RegistrationForm(Form):
 @app.route('/')
 def index():
     return render_template("home.html")
-#home2
-@app.route('/')
-def home2():
-    return render_template("home2.html")
 
 # About
 @app.route('/about')
