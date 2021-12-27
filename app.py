@@ -408,7 +408,6 @@ class SearchForm(Form):
 def search():
     search=SearchForm(request.form)
     if request.method=='POST':
-        print(request.data)
         return search_results(search)
     return render_template('search.html', form=search)
 
