@@ -397,13 +397,14 @@ def send_image(filename):
     return send_from_directory("images", filename)'''
 
 
-
-
 # Search Class
+
+
 class SearchForm(Form):
-    choices=[('bloodgroup','bloodgroup')]
+    choices = [('bloodgroup','bloodgroup')]
     select=SelectField('Search For Blood', choices=choices)
-    search=StringField('')
+    search = SelectField('search', choices=[('AB+', 'AB+'), ('B+', 'B+')])
+    #search=StringField('')
 
 
 #Search Items
@@ -424,10 +425,10 @@ def search_results(search):
             cur =con.cursor()
         cur.execute('''select * from users where bloodgroup=:bloodgroup''', bloodgroup=search_string)
         results =cur.fetchall()
-        print(results)
+        #print(results)
         from pprint import pprint
-        pprint(results)
-        print(len(results))
+       # pprint(results)
+        #print(len(results))
 
     if not results:
         flash('No results found!ha ha ha')
