@@ -3,6 +3,8 @@
 # import default as default
 import app as app
 from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory
+from flask_datepicker import datepicker
+from wtforms.fields.html5 import DateField
 # from data import Articles
 # Articles=Articles()
 # For seraching category
@@ -58,7 +60,8 @@ class RegistrationForm(Form):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Rpt Password')
-    # image = ('upload')
+    last_donate_date=DateField('last_donate_date')
+    # image = ('upload'), format='%d/%m/%y',validators=(validators.DataRequired(),))
     # accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
 
 
@@ -112,12 +115,13 @@ def register():
         bloodgroup = form_response.bloodgroup.data
         district = form_response.district.data
         password = sha256_crypt.encrypt(str(form_response.password.data))
+        last_donate_date=form_response.last_donate_date.data
         # image = form_response.image.data
         cur = con.cursor()
         # https://learncodeshare.net/2015/06/26/insert-crud-using-cx_oracle/ inserting documentations
-        cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, DISTRICT,password)"
-                    " VALUES (:name, :username, :mothersname, :phone, :email, :bloodgroup, :district,:password)",
-                    (name, username, mothersname, phone, email, bloodgroup, district,password))
+        cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, DISTRICT,password,last_donate_date)"
+                    " VALUES (:name, :username, :mothersname, :phone, :email, :bloodgroup, :district,:password,:last_donate_date)",
+                    (name, username, mothersname, phone, email, bloodgroup, district,password,last_donate_date))
         # alternate code
         #cur.execute("INSERT INTO users (name, username, mothersname, phone, email, bloodgroup, DISTRICT,password)"
                     #" VALUES (\'{}\',\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')".
