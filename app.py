@@ -440,4 +440,7 @@ def search_results(search):
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
+    app.debug = True
     app.run(debug=True)
+    #below code is for ip setting.
+    #app.run(host="10.10.10.98")
