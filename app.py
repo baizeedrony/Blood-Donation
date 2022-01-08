@@ -295,7 +295,7 @@ def delete_article(id):
 # @is_logged_in
 def user_list():
     cur = con.cursor()
-    result = cur.execute('select * from users')
+    result = cur.execute('select * from users order by bloodgroup desc')
     users = cur.fetchall()
     directory = os.path.join(APP_ROOT, 'images')
     image_path = os.path.join(directory, 'cat.jpg')
