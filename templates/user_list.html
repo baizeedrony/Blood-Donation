@@ -11,12 +11,15 @@
      background-repeat: no-repeat;
      background-size: cover;
     }
+
+    .table table-striped{
+     margin-top: 25px;}
 </style>
 
 
 
-<hr>
-<table class="table table-striped">
+ <!-- <hr>-->
+<table class="table table-striped"  border="1" >
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -27,8 +30,7 @@
        <!-- <th>Password</th>-->
       <!--  <th>register_date</th>
         <th>Picture</th> -->
-        <th></th>
-        <th></th>
+
     </tr>
     {% for user in users %}
         <td>{{user[0]}}</td>
