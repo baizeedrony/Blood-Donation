@@ -1,0 +1,42 @@
+
+{% extends 'layout.html' %}
+{% block body %}
+<style>
+
+
+    body {
+    background-image:url({{url_for('static',filename='onecolor.jpg')}});
+     background-repeat: no-repeat;
+     background-size: cover;
+    }
+
+    .table table-striped{
+     margin-top: 25px;}
+</style>
+
+
+
+ <!-- <hr>-->
+<table class="table table-striped"  border="1" >
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+       <!-- <th>Body </th>-->
+
+
+
+    </tr>
+    {% for bloglist in bloglists %}
+        <td>{{bloglist[0]}}</td>
+        <td>{{bloglist[1]}}</td>
+        <td>{{bloglist[2]}}</td>
+        <!-- <td>{{bloglist[3]}}</td>-->
+
+
+   <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

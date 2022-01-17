@@ -292,8 +292,9 @@ def delete_article(id):
 
 # User_list
 @app.route('/user_list')
-# @is_logged_in
+@is_logged_in
 def user_list():
+
     cur = con.cursor()
     result = cur.execute('select * from users order by bloodgroup desc')
     users = cur.fetchall()
@@ -436,7 +437,20 @@ def search_results(search):
     else:
         return render_template('results.html', results=results)
 
- 
+@app.route('/bloglist')
+def bloglist():
+    cur=con.cursor()
+    results=cur.execute(''' select *from articles''')
+    allblog=cur.fetchall()
+
+    if results.rowcount > 0:
+        return render_template('bloglist.html', bloglists=allblog)
+    else:
+        msg = ('no user found')
+        return render_template('bloglist.html', msg=msg)
+
+
+
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
