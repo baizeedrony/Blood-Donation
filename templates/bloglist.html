@@ -1,23 +1,34 @@
-
 {% extends 'layout.html' %}
 {% block body %}
+
 <style>
 
 
-    body {
-    background-image:url({{url_for('static',filename='onecolor.jpg')}});
-     background-repeat: no-repeat;
-     background-size: cover;
-    }
 
-    .table table-striped{
-     margin-top: 25px;}
+
 </style>
+<div class="container">
+             <header class="jumbotron" style="background-image: url({{url_for('static',filename='100.jpg')}})">
 
 
 
- <!-- <hr>-->
-<table class="table table-striped"  border="1" >
+
+                            <h1>Oracle APEX Blogs</h1>
+                            <h2 class="subheading"></h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">Start Blog</a>
+                                on August 24, 2022
+                            </span>
+
+
+
+
+        </header>
+    <div class="container">
+ <div class="card-group">
+     <div class="card">
+  <table class="table table-striped" >
     <tr>
         <th>ID</th>
         <th>Title</th>
@@ -39,4 +50,80 @@
     {% endfor %}
 
 </table>
+
+     </div>
+
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+             <div class="card-body">
+
+
+    {% for bloglist in bloglists %}
+
+   <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
+    </tr>
+
+      <p class="card-text">{{bloglist[1]}}</p>
+      <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
+    {% endfor %}
+
+
+     </div>
+
+
+
+
+
+ </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>>
