@@ -437,6 +437,8 @@ def search_results(search):
     else:
         return render_template('results.html', results=results)
 
+
+# Blog list
 @app.route('/bloglist')
 def bloglist():
     cur=con.cursor()

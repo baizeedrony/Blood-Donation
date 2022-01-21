@@ -1,71 +1,65 @@
 {% extends 'layout.html' %}
 {% block body %}
-
 <style>
-
-
-
+body{
+background-color:#e6f2ff;
+}
 
 </style>
 <div class="container">
-             <header class="jumbotron" style="background-image: url({{url_for('static',filename='100.jpg')}})">
 
+    <header class="jumbotron" style="background-image: url({{url_for('static',filename='100.jpg')}});width :auto;height:100%;";>
 
+            <h1>Oracle APEX Blogs</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+                Posted by
+                <a href="#!">Start Blog</a>
+                on August 24, 2022
+            </span>
+    </header>
 
-
-                            <h1>Oracle APEX Blogs</h1>
-                            <h2 class="subheading"></h2>
-                            <span class="meta">
-                                Posted by
-                                <a href="#!">Start Blog</a>
-                                on August 24, 2022
-                            </span>
-
-
-
-
-        </header>
     <div class="container">
- <div class="card-group">
-     <div class="card">
-  <table class="table table-striped" >
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Author</th>
-       <!-- <th>Body </th>-->
+        <div class="card-group">
+
+            <!--  left card  -->
+            <div class="card">
+                    <table class="table table-striped" >
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+
+                        </tr>
+                        {% for bloglist in bloglists %}
+                            <td>{{bloglist[0]}}</td>
+                            <td>{{bloglist[1]}}</td>
+                            <td>{{bloglist[2]}}</td>
+                            <!-- <td>{{bloglist[3]}}</td>-->
 
 
-
-    </tr>
-    {% for bloglist in bloglists %}
-        <td>{{bloglist[0]}}</td>
-        <td>{{bloglist[1]}}</td>
-        <td>{{bloglist[2]}}</td>
-        <!-- <td>{{bloglist[3]}}</td>-->
+                            <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+            </div>
 
 
-   <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
-    </tr>
-    {% endfor %}
-
-</table>
-
-     </div>
-
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
+            <!--  Right card  -->
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
              <div class="card-body">
 
 
-    {% for bloglist in bloglists %}
+                {% for bloglist in bloglists %}
 
-   <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
-    </tr>
+                 <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
+                    </tr>
 
-      <p class="card-text">{{bloglist[1]}}</p>
-      <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
-    {% endfor %}
+                  <p class="card-text">{{bloglist[1]}}</p>
+                  <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
+                    </tr>
+                {% endfor %}
 
 
      </div>
@@ -76,26 +70,8 @@
 
  </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 </div>
-
 
 {% endblock %}
 
@@ -122,8 +98,3 @@
 
 
 
-
-
-
-</body>
-</html>>
