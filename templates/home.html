@@ -3,10 +3,16 @@
 
 <div>
     <div class="jumbotron text-left" style="background-color: rgba(255, 99, 71, 0.2); position: absolute;  left: 0px;right: 0px;
-width :1350px;height:100%; margin:auto ; border: 1px solid white ; padding: 0px; padding-top: auto;
-background-image:url({{url_for('static',filename='blood.jpg')}});height:100%;padding-top:0px">
-        <h1 style="color:#660000"><b>Emergency Blood and Platelet Shortage <br> Please Register.</b></h1>
-        <p class="lead" style="color:black"> From this website we can search blood Doner </p>
+        width :1350px;height:100%; margin:auto ; border: 1px solid white ; padding: 0px; padding-top: auto;
+        background-image:url({{url_for('static',filename='blood.jpg')}});height:100%;padding-top:0px">
+        <h1 style="color:#660000">
+            <b>
+                Emergency Blood and Platelet Shortage <br> Please Register.
+            </b>
+        </h1>
+            <p class="lead" style="color:black">
+                From this website we can search blood Doner
+            </p>
 
         {% if session.logged_in == NULL %}
         <a href="register" class="btn btn-primary btn-lg">Register</a>
@@ -15,8 +21,10 @@ background-image:url({{url_for('static',filename='blood.jpg')}});height:100%;pad
 
 
         <div class="jumbotron text-left" style="background-color:white; position: absolute;  left: 0px;right: 0px;
-width :1350px;height:inherit;margin:auto;margin-top: 40px;border: 1px solid white; padding: 5px;">
-            <h2 style="font-weight:bold;color:red">Your Donation Is Urgently Needed</h2>
+                    width :1350px;height:inherit;margin:auto;margin-top: 40px;border: 1px solid white; padding: 5px;">
+            <h2 style="font-weight:bold;color:red">
+                Your Donation Is Urgently Needed
+            </h2>
             <p class="lead" style="color:black" align="justify"> Come give blood in October and receive a free Zaxby’s®
                 Signature Sandwich reward or get a $5 e-gift card. Plus, get double the thank-you with an extra $5
                 e-gift
@@ -24,12 +32,12 @@ width :1350px;height:inherit;margin:auto;margin-top: 40px;border: 1px solid whit
             <br>
 
             <div class="jumbotron text-left" style="background-color:#2788d8; position: absolute;  left: 0px;right: 0px;
-width :1350px;height:inherit;margin:auto;margin-top: 30px;border: 1px solid white;padding: 10px; ">
-
+                        width :1350px;height:inherit;margin:auto;margin-top: 30px;border: 1px solid white;padding: 10px; ">
                 <p class="lead" style="color:black" align="justify">You may still donate blood,
                     platelets or plasma after receiving a COVID-19 vaccine. Knowing the name of the manufacturer of the
                     vaccine is important in determining your blood donation eligibility.
-                    To learn more about the COVID-19 vaccine and blood donation, </p>
+                    To learn more about the COVID-19 vaccine and blood donation,
+                </p>
 
 
                 <div class="justify-content-center" style="background-color:white; position: absolute;

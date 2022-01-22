@@ -4,11 +4,11 @@
 body{
 background-color:#e6f2ff;
 }
-
 </style>
-<div class="container">
+<div class="jumbotron"
 
-    <header class="jumbotron" style="background-image: url({{url_for('static',filename='100.jpg')}});width :auto;height:100%;";>
+
+    style="background-image: url({{url_for('static',filename='100.jpg')}});">
 
             <h1>Oracle APEX Blogs</h1>
             <h2 class="subheading"></h2>
@@ -18,30 +18,17 @@ background-color:#e6f2ff;
                 on August 24, 2022
             </span>
     </header>
-
-    <div class="container">
+</div>
+    <div class="jumbotron">
+        <div class="container">
         <div class="card-group">
 
             <!--  left card  -->
             <div class="card">
-                    <table class="table table-striped" >
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Author</th>
-
-                        </tr>
-                        {% for bloglist in bloglists %}
-                            <td>{{bloglist[0]}}</td>
-                            <td>{{bloglist[1]}}</td>
-                            <td>{{bloglist[2]}}</td>
-                            <!-- <td>{{bloglist[3]}}</td>-->
-
-
-                            <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
-                        </tr>
-                        {% endfor %}
-                    </table>
+                <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:550px">
+                <h2>
+                <a href="/post/the-promise-of-being-customer-first" class="">How we deliver on the promise of being "customer-first"</a>
+                </h2>
             </div>
 
 
@@ -60,18 +47,56 @@ background-color:#e6f2ff;
                   <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
                     </tr>
                 {% endfor %}
-
-
-     </div>
-
-
-
-
-
- </div>
+             </div>
+            </div>
         </div>
     </div>
+    </div>
+
+
+    <div class="jumbotron">
+
+
+
+                 <div class="card-deck">
+                      <div class="card">
+                        <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:302px">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                      </div>
+                 </div>
+    </div>
+    </div>
+    </div>
+
+
 </div>
+
 
 {% endblock %}
 

@@ -426,10 +426,7 @@ def search_results(search):
             cur =con.cursor()
         cur.execute('''select * from users where bloodgroup=:bloodgroup''', bloodgroup=search_string)
         results =cur.fetchall()
-        #print(results)
-        from pprint import pprint
-       # pprint(results)
-        #print(len(results))
+
 
     if not results:
         flash('No results found!ha ha ha')
@@ -441,14 +438,14 @@ def search_results(search):
 # Blog list
 @app.route('/bloglist')
 def bloglist():
-    cur=con.cursor()
-    results=cur.execute(''' select *from articles''')
-    allblog=cur.fetchall()
+    cur = con.cursor()
+    results = cur.execute(''' select *from articles''')
+    allblog = cur.fetchall()
 
     if results.rowcount > 0:
         return render_template('bloglist.html', bloglists=allblog)
     else:
-        msg = ('no user found')
+        msg = ('no data found')
         return render_template('bloglist.html', msg=msg)
 
 
