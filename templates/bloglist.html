@@ -20,7 +20,7 @@ background-color:#e6f2ff;
     </header>
 </div>
     <div class="jumbotron">
-        <div class="container">
+        <div class="">
         <div class="card-group">
 
             <!--  left card  -->
@@ -29,6 +29,16 @@ background-color:#e6f2ff;
                 <h2>
                 <a href="/post/the-promise-of-being-customer-first" class="">How we deliver on the promise of being "customer-first"</a>
                 </h2>
+                 {% for onses in onse %}
+
+                 <td> <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
+                    </tr>
+
+                  <p class="card-text">{{onses[1]}}</p>
+                  <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
+                    </tr>
+                {% endfor %}
+
             </div>
 
 

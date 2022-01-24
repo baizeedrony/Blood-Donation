@@ -442,11 +442,21 @@ def bloglist():
     results = cur.execute(''' select *from articles''')
     allblog = cur.fetchall()
 
+
     if results.rowcount > 0:
         return render_template('bloglist.html', bloglists=allblog)
     else:
         msg = ('no data found')
         return render_template('bloglist.html', msg=msg)
+    oneresult = cur.execute('''select title,body from articles where id =(select max(id) from articles''')
+    onse = cur.fetchone()
+
+    if oneresult.rowcount>0:
+        return render_template('bloglist.html',onse=onse)
+    else:
+        msg =('error data found')
+
+
 
 
 
