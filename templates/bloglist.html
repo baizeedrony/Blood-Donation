@@ -25,20 +25,20 @@ background-color:#e6f2ff;
 
             <!--  left card  -->
             <div class="card">
-                <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:550px">
-                <h2>
-                <a href="/post/the-promise-of-being-customer-first" class="">How we deliver on the promise of being "customer-first"</a>
-                </h2>
+                <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
                  {% for onses in onse %}
 
-                 <td> <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
-                    </tr>
 
-                  <p class="card-text">{{onses[1]}}</p>
-                  <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
-                    </tr>
+                 <td>
+                     <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a>
+                 </td>
+                 </tr>
+                      <p class="card-text">{{onses[1]}}</p>
+                      <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
+                 </tr>
                 {% endfor %}
-
+            </div>
             </div>
 
 

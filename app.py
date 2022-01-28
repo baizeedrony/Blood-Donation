@@ -438,23 +438,23 @@ def search_results(search):
 # Blog list
 @app.route('/bloglist')
 def bloglist():
+    # for  right side div function
     cur = con.cursor()
     results = cur.execute(''' select *from articles''')
     allblog = cur.fetchall()
+    # end right side div function
 
+# for left side div function
+    cur = con.cursor()
+    oneresult = cur.execute('''select *from article''')
+    onse = cur.fetchall()
+# end left side
 
-    if results.rowcount > 0:
-        return render_template('bloglist.html', bloglists=allblog)
+    if results.rowcount > 0 or oneresult.rowcount>0 :
+        return render_template('bloglist.html', bloglists=allblog,onse=onse)
     else:
         msg = ('no data found')
         return render_template('bloglist.html', msg=msg)
-    oneresult = cur.execute('''select title,body from articles where id =(select max(id) from articles''')
-    onse = cur.fetchone()
-
-    if oneresult.rowcount>0:
-        return render_template('bloglist.html',onse=onse)
-    else:
-        msg =('error data found')
 
 
 
