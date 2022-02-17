@@ -405,12 +405,12 @@ class SearchForm(Form):
     choices = [('bloodgroup','bloodgroup')]
     select=SelectField('Search For Blood', choices=choices)
     search = SelectField('search', choices=[('AB+', 'AB+'), ('B+', 'B+')])
-    #search=StringField('')
+    # search=StringField('')
 
 
-#Search Items
+# Search Items
 @app.route('/search', methods=['GET', 'POST'])
-#create_cursor
+# create_cursor
 def search():
     search=SearchForm(request.form)
     if request.method=='POST':
@@ -423,10 +423,9 @@ def search_results(search):
     search_string = search.data['search']
     if search_string:
         if search.data['select'] == 'bloodgroup':
-            cur =con.cursor()
-        cur.execute('''select * from users where bloodgroup=:bloodgroup''', bloodgroup=search_string)
-        results =cur.fetchall()
-
+            cur = con.cursor()
+        cur.execute('''select * from users where bloodgroup = :bloodgroup''', bloodgroup=search_string)
+        results = cur.fetchall()
 
     if not results:
         flash('No results found!ha ha ha')
@@ -448,24 +447,26 @@ def bloglist():
     cur = con.cursor()
     oneresult = cur.execute('''select *from article''')
     onse = cur.fetchall()
-# end left side
 
-    if results.rowcount > 0 or oneresult.rowcount>0 :
+
+# end left side
+    if results.rowcount > 0 or oneresult.rowcount > 0:
         return render_template('bloglist.html', bloglists=allblog,onse=onse)
     else:
         msg = ('no data found')
         return render_template('bloglist.html', msg=msg)
 
 
+# Flask Crud application full course
 
-
-
-
+@app.route('/employee')
+def employee():
+    return render_template('employee.html')
 
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.debug = True
     app.run(debug=True)
-    #below code is for ip setting.
-    #app.run(host="10.10.10.98")
+    # below code is for ip setting.
+    # app.run(host="192.168.0.106")

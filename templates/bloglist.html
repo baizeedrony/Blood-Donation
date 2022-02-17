@@ -7,69 +7,59 @@ background-color:#e6f2ff;
 </style>
 <div class="jumbotron"
 
-
-    style="background-image: url({{url_for('static',filename='100.jpg')}});">
-
-            <h1>Oracle APEX Blogs</h1>
-            <h2 class="subheading"></h2>
-            <span class="meta">
+         style="background-image: url({{url_for('static',filename='100.jpg')}});">
+         <h1>Oracle APEX Blogs</h1>
+         <h2 class="subheading"></h2>
+         <span class="meta">
                 Posted by
                 <a href="#!">Start Blog</a>
                 on August 24, 2022
-            </span>
+         </span>
     </header>
 </div>
     <div class="jumbotron">
         <div class="">
-        <div class="card-group">
-
-            <!--  left card  -->
-            <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-group">
+                <div class="card"> <!--  left card  -->
+                    <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
+<!--                        <img class="card-img-top" src="..." alt="Card image cap">-->
                         <div class="card-body">
-                 {% for onses in onse %}
-
-
-                 <td>
-                     <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a>
-                 </td>
-                 </tr>
-                      <p class="card-text">{{onses[1]}}</p>
-                      <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
-                 </tr>
-                {% endfor %}
-            </div>
-            </div>
+                            {% for onses in onse %}
+                            <td>
+                                <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a>
+                            </td>
+                            </tr>
+                            <p class="card-text">{{onses[1]}}</p>
+                            <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
+                            </tr>
+                                {% endfor %}
+                        </div>
+                </div>
 
 
             <!--  Right card  -->
             <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-             <div class="card-body">
+                <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
+<!--                <img class="card-img-top" src="..." alt="Card image cap">-->
+                    <div class="card-body">
+                        {% for bloglist in bloglists %}
 
+                            <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
+                            </tr>
 
-                {% for bloglist in bloglists %}
-
-                 <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
-                    </tr>
-
-                  <p class="card-text">{{bloglist[1]}}</p>
-                  <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
-                    </tr>
-                {% endfor %}
-             </div>
+                                <p class="card-text">{{bloglist[1]}}</p>
+                                <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
+                            </tr>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-
-
     <div class="jumbotron">
 
-
-
-                 <div class="card-deck">
-                      <div class="card">
+        <div class="card-deck">
+            <div class="card">
                         <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
@@ -99,15 +89,11 @@ background-color:#e6f2ff;
                           <small class="text-muted">Last updated 3 mins ago</small>
                         </div>
                       </div>
-                 </div>
+        </div>
     </div>
+        </div>
     </div>
-    </div>
-
-
 </div>
-
-
 {% endblock %}
 
 
