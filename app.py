@@ -458,10 +458,42 @@ def bloglist():
 
 
 # Flask Crud application full course
+class employeedata(Form):
+    name = c('name', [validators.Length(min=4, max=25)])
+    email = StringField('email', [validators.Length(min=4, max=25)])
+    phone = StringField('phone', [validators.Length(min=4, max=25)])
+
+    def __init__(self,name,email,phone):
+        name=self.name,
+        email=self.email,
+        phone=self.phone
 
 @app.route('/employee')
 def employee():
     return render_template('employee.html')
+
+
+@app.route('/insert', methods=['POST'])
+def insert():
+    # form_response = employeedata(request.form)
+    if request.form =='POST':
+        name=request.form['name']
+        email=request.form['email']
+        phone=request.form['phone']
+        cur = con.cursor()
+        cur.execute(
+            "INSERT INTO employees (name, email, phone)"
+            " VALUES (:name, :email, :phone)",
+            (name, email, phone))
+        con.commit()
+        # return "<h1>You are now registered</h1>"
+        flash("you are now registered", "success")
+
+
+        # return render_template('register.html')
+    return redirect(url_for('employee'))
+
+
 
 
 if __name__ == '__main__':
