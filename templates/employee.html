@@ -6,8 +6,12 @@
     <div class="row">
         <div class="col md-12">
             <div class="jumbotron p-3">
-                <h1> Manage <b>Employee</b> <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#mymodal">
-                    Add New Employees </button> </h1>
+                <h1> Manage <b>Employee</b>
+                    <button type="button" class="btn btn-success float-right" data-toggle="modal"
+                            data-target="#mymodal">
+                        Add New Employees
+                    </button>
+                </h1>
 
                 <table class="table table-hover table-dark">
                     <tr>
@@ -23,87 +27,82 @@
                         <th>Kamal</th>
                         <th>kamalhossain@gmail.com</th>
                         <th>01815236547</th>
-                        <td><a href="" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit">Edit</a>
-                        <a href="" class="btn btn-danger btn-xs" onclick="return confirm('Are You sure?')">Delete</a></td>
+                        <td><a href="" class="btn btn-warning btn-xs" data-toggle="modal"
+                               data-target="#modaledit">Edit</a>
+                            <a href="" class="btn btn-danger btn-xs"
+                               onclick="return confirm('Are You sure?')">Delete</a></td>
                     </tr>
                 </table>
 
-                <div id="modaledit" class="modal fade" role="dialog">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h4 class="modal-title">Update Employee</h4>
-         </div>
-         <div class="modal-body">
-            <form action="" method="POST">
-               <div class="form-group">
-                  <label>Name:</label>
-                  <input type="text" class="form-control" name="name" required="1">
-               </div>
-                <div class="form-group">
-                  <label>Email:</label>
-                  <input type="email" class="form-control" name="email" required="1">
-               </div>
-                <div class="form-group">
-                  <label>Phone:</label>
-                  <input type="number" class="form-control" name="phone" required="1">
-               </div>
-               <div class="form-group">
-                  <button class="btn btn-primary" type="submit">Apply change</button>
-               </div>
-            </form>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-         </div>
-      </div>
-   </div>
-</div>
-
+                <!--                <div id="modaledit" class="modal fade" role="dialog">-->
+                <!--   <div class="modal-dialog">-->
+                <!--      <div class="modal-content">-->
+                <!--         <div class="modal-header">-->
+                <!--            <h4 class="modal-title">Update Employee</h4>-->
+                <!--         </div>-->
+                <!--         <div class="modal-body">-->
+                <!--            <form action="" method="POST">-->
+                <!--               <div class="form-group">-->
+                <!--                  <label>Name:</label>-->
+                <!--                  <input type="text" class="form-control" name="name" required="1">-->
+                <!--               </div>-->
+                <!--                <div class="form-group">-->
+                <!--                  <label>Email:</label>-->
+                <!--                  <input type="email" class="form-control" name="email" required="1">-->
+                <!--               </div>-->
+                <!--                <div class="form-group">-->
+                <!--                  <label>Phone:</label>-->
+                <!--                  <input type="number" class="form-control" name="phone" required="1">-->
+                <!--               </div>-->
+                <!--               <div class="form-group">-->
+                <!--                  <button class="btn btn-primary" type="submit">Apply change</button>-->
+                <!--               </div>-->
+                <!--            </form>-->
+                <!--         </div>-->
+                <!--         <div class="modal-footer">-->
+                <!--            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                <!--         </div>-->
+                <!--      </div>-->
+                <!--   </div>-->
             </div>
 
-
-
-
-<div id="mymodal" class="modal fade" role="dialog">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h4 class="modal-title">Add Employee</h4>
-         </div>
-         <div class="modal-body">
-            <form action="{{url_for('insert')}}" method="POST">
-               <div class="form-group">
-                  <label>Name:</label>
-                  <input type="text" class="form-control" name="name" required="1">
-               </div>
-                <div class="form-group">
-                  <label>Email:</label>
-                  <input type="email" class="form-control" name="email" required="1">
-               </div>
-                <div class="form-group">
-                  <label>Phone:</label>
-                  <input type="number" class="form-control" name="phone" required="1">
-               </div>
-               <div class="form-group">
-                  <button class="btn btn-primary" type="submit">Add Employee</button>
-               </div>
-            </form>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-         </div>
-      </div>
-   </div>
-</div>
-
-
-
-
-
-
         </div>
+
+
+        <div id="mymodal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Employee</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <form action="{{url_for('insert')}}" method="POST">
+                            {{ form.EMPLOYEE_NAME.label }}
+                            {{ form.EMPLOYEE_NAME }}
+
+                            {{ form.EMAIL.label }}
+                            {{ form.EMAIL }}
+
+                            {{ form.PHONE_NUMBER.label }}
+                            {{ form.PHONE_NUMBER }}
+
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit" value="insert">Add Employee</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+</div>
 </div>
 
 {% endblock %}

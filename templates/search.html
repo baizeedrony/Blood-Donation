@@ -3,40 +3,37 @@
 
 <doctype html>
 
-<div style="background-color:green; position:relative;width :100%;height:210px;margin:auto;text-align:center;padding:100px">
-
+    <div style="background-color:green; position:relative;width :100%;height:210px;margin:auto;text-align:center;padding:100px">
 
 
         <title style="font-weight: bold;"> Search Your Desired Blood Group </title>
-    </head>
+        </head>
 
-    <h2  style="font-weight: bold;"> Search Your Desired Blood Group</h2>
+        <h2 style="font-weight: bold;"> Search Your Desired Blood Group</h2>
 
-    {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
 
-    {% from "includes/_formhelpers.html" import render_field %}
-    <form method="post">
-        <dl>
-            {{ render_field(form.select) }}
+        {% from "includes/_formhelpers.html" import render_field %}
+        <form method="post">
+            <dl>
+                {{ render_field(form.select) }}
                 {{ render_field(form.search) }}
-            <input type="submit" value="search">
-        </dl>
-    </form>
+                <input type="submit" value="search">
+            </dl>
+        </form>
 
-    <div id="child" style="position:relative;width :100%;height:210px;margin:auto">
-
-
-    </div>
+        <div id="child" style="position:relative;width :100%;height:210px;margin:auto">
 
 
+        </div>
 
 
 </doctype>

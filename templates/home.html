@@ -10,9 +10,9 @@
                 Emergency Blood and Platelet Shortage <br> Please Register.
             </b>
         </h1>
-            <p class="lead" style="color:black">
-                From this website we can search blood Doner
-            </p>
+        <p class="lead" style="color:black">
+            From this website we can search blood Doner
+        </p>
 
         {% if session.logged_in == NULL %}
         <a href="register" class="btn btn-primary btn-lg">Register</a>
@@ -28,7 +28,9 @@
             <p class="lead" style="color:black" align="justify"> Come give blood in October and receive a free Zaxby’s®
                 Signature Sandwich reward or get a $5 e-gift card. Plus, get double the thank-you with an extra $5
                 e-gift
-                card when you come to give in October!.<a href="https://www.redcrossblood.org/local-homepage/events/super_bowl.html" data-di-id="di-id-a7b351ab-dd8345de">Learn more»</a> </p>
+                card when you come to give in October!.<a
+                        href="https://www.redcrossblood.org/local-homepage/events/super_bowl.html"
+                        data-di-id="di-id-a7b351ab-dd8345de">Learn more»</a></p>
             <br>
 
             <div class="jumbotron text-left" style="background-color:#2788d8; position: absolute;  left: 0px;right: 0px;
@@ -41,8 +43,7 @@
 
 
                 <div class="justify-content-center" style="background-color:white; position: absolute;
-         left: 0px;right: 0px;
-width :1350px;height:inherit ;margin:auto;margin-top: 30px;border: 1px solid white; padding:20px">
+                            left: 0px;right: 0px;width :1350px;height:inherit ;margin:auto;margin-top: 30px;border: 1px solid white; padding:20px">
 
 
                     <div class="card-group">
@@ -140,14 +141,13 @@ width :1350px;height:inherit ;margin:auto;margin-top: 30px;border-radius: 50px 2
                         </div>
 
                         <div class="jumbotron text-left" style="background-color: rgba(255, 99, 71, 0.2); position: absolute;  left: 0px;right: 0px;
-width :1350px;height:100%;margin:auto ; border: 1px solid white ; background-image:url({{url_for('static',filename='100.jpg')}});padding: 10px;">
+                                     width :1350px;height:100%;margin:auto ; border: 1px solid white ; background-image:url({{url_for('static',filename='100.jpg')}});padding: 10px;">
                             <h1 style="color:#660000;text-align:left"><b>Platelet Donors Help Patients <br> Please
                                 Register.</b>
                             </h1>
                             <p class="lead" style="color:black"> Help patients like Braylan by donating </p>
 
                         </div>
-
 
 
                         {% endblock %}

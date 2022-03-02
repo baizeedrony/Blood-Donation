@@ -5,6 +5,7 @@ import app as app
 from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory
 from flask_datepicker import datepicker
 from wtforms.fields.html5 import DateField
+
 # from data import Articles
 # Articles=Articles()
 # For seraching category
@@ -17,6 +18,8 @@ from flask_mail import Mail, Message
 import cx_Oracle
 import os
 con = cx_Oracle.connect('doner/doner@localhost/Orcl')
+
+db=con
 
 
 #con = cx_Oracle.connect('oriondb/o@118.67.215.114/Orcl')
@@ -459,40 +462,73 @@ def bloglist():
 
 # Flask Crud application full course
 class employeedata(Form):
-    name = c('name', [validators.Length(min=4, max=25)])
-    email = StringField('email', [validators.Length(min=4, max=25)])
-    phone = StringField('phone', [validators.Length(min=4, max=25)])
+    EMPLOYEE_NAME = StringField('EMPLOYEE_NAME', [validators.Length(min=4, max=25)])
+    EMAIL = StringField('EMAIL', [validators.Length(min=4, max=25)])
+    PHONE_NUMBER = StringField('PHONE_NUMBER', [validators.Length(min=4, max=25)])
+print(employeedata)
 
-    def __init__(self,name,email,phone):
-        name=self.name,
-        email=self.email,
-        phone=self.phone
-
+    # def __init__(self,name,email,phone):
+    #     name=self.name,
+    #     email=self.email,
+    #     phone=self.phone
+#
 @app.route('/employee')
 def employee():
     return render_template('employee.html')
 
 
-@app.route('/insert', methods=['POST'])
+@app.route('/insert',  methods=['POST'])
 def insert():
-    # form_response = employeedata(request.form)
-    if request.form =='POST':
-        name=request.form['name']
-        email=request.form['email']
-        phone=request.form['phone']
+    print(0)
+    form_response = employeedata(request.form)
+    print(1)
+    if request.method == 'POST' and form_response.validate():
+        print(2)
+        EMPLOYEE_NAME = form_response.EMPLOYEE_NAME.data
+        EMAIL=form_response.EMAIL.data
+        PHONE_NUMBER=form_response.PHONE_NUMBER.data
+        print(3)
         cur = con.cursor()
+        print(4)
         cur.execute(
-            "INSERT INTO employees (name, email, phone)"
-            " VALUES (:name, :email, :phone)",
-            (name, email, phone))
+            "INSERT INTO employee (EMPLOYEE_NAME, EMAIL, PHONE_NUMBER)"
+            " VALUES (:EMPLOYEE_NAME,  :EMAIL,:PHONE_NUMBER)",
+            (EMPLOYEE_NAME,  EMAIL,PHONE_NUMBER))
+        print(5)
         con.commit()
-        # return "<h1>You are now registered</h1>"
-        flash("you are now registered", "success")
 
+    else:
+        print(form_response.validate())
+        redirect(url_for('employee.html'))
+        return render_template('insert.html', form=form_response)
+    flash("you are now registered", "success")
 
-        # return render_template('register.html')
-    return redirect(url_for('employee'))
-
+# class data(db.model):
+#     employee_name=db.column(db.String(100))
+#     email=db.column(db.String(100))
+#     phone_number=db.column(db.number(100))
+#
+#     def __init__(self,employee_name,email,phone_number):
+#         self.employee_name=employee_name
+#         self.email = email
+#         self.phone_number = phone_number
+# @app.route('/employee')
+# def employee():
+#     return render_template('employee.html')
+#
+# @app.route('/insert',  methods=['POST'])
+# def insert():
+#
+#     if request.method == 'POST' :
+#         EMPLOYEE_NAME = request.form['employee_name']
+#         EMAIL=request.form['EMAIL']
+#         PHONE_NUMBER=request.form['PHONE_NUMBER']
+#
+#
+#         mydata = data(EMPLOYEE_NAME,EMAIL,PHONE_NUMBER)
+#         db.session.add(mydata)
+#         db.session.commit()
+#         return redirect(url_for('employee.html'))
 
 
 
@@ -500,5 +536,6 @@ if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.debug = True
     app.run(debug=True)
+
     # below code is for ip setting.
     # app.run(host="192.168.0.106")
