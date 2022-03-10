@@ -5,7 +5,6 @@ import app as app
 from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory
 from flask_datepicker import datepicker
 from wtforms.fields.html5 import DateField
-
 # from data import Articles
 # Articles=Articles()
 # For seraching category
@@ -467,17 +466,15 @@ class employeedata(Form):
     PHONE_NUMBER = StringField('PHONE_NUMBER', [validators.Length(min=4, max=25)])
 print(employeedata)
 
-    # def __init__(self,name,email,phone):
-    #     name=self.name,
-    #     email=self.email,
-    #     phone=self.phone
-#
+
 @app.route('/employee')
 def employee():
-    return render_template('employee.html')
+    cur = con.cursor()
+    result = cur.execute('select * from employee')
+    return render_template('employee.html',result=result)
 
 
-@app.route('/insert',  methods=['POST'])
+@app.route('/insert',  methods=['POST','GET'])
 def insert():
     print(0)
     form_response = employeedata(request.form)
@@ -496,12 +493,18 @@ def insert():
             (EMPLOYEE_NAME,  EMAIL,PHONE_NUMBER))
         print(5)
         con.commit()
-
+        # return render_template('employee.html', form=form_response)
+        return redirect(url_for('employee'))
     else:
         print(form_response.validate())
-        redirect(url_for('employee.html'))
-        return render_template('insert.html', form=form_response)
+        print(7)
+        # redirect(url_for('employee.html'))
+        return render_template('employee.html', form=form_response)
+    print(8)
+    # redirect(url_for('employee.html'))
+    print(9)
     flash("you are now registered", "success")
+
 
 # class data(db.model):
 #     employee_name=db.column(db.String(100))
@@ -529,8 +532,6 @@ def insert():
 #         db.session.add(mydata)
 #         db.session.commit()
 #         return redirect(url_for('employee.html'))
-
-
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
