@@ -2,7 +2,7 @@
 # from email.policy import default
 # import default as default
 import app as app
-from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory
+from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory,flash
 from flask_datepicker import datepicker
 from wtforms.fields.html5 import DateField
 # from data import Articles
@@ -18,7 +18,7 @@ import cx_Oracle
 import os
 con = cx_Oracle.connect('doner/doner@localhost/Orcl')
 
-db=con
+
 
 
 #con = cx_Oracle.connect('oriondb/o@118.67.215.114/Orcl')
@@ -470,7 +470,7 @@ print(employeedata)
 @app.route('/employee')
 def employee():
     cur = con.cursor()
-    result = cur.execute('select * from employee')
+    result = cur.execute('select * from employee order by employee_id')
     return render_template('employee.html',result=result)
 
 
@@ -493,7 +493,8 @@ def insert():
             (EMPLOYEE_NAME,  EMAIL,PHONE_NUMBER))
         print(5)
         con.commit()
-        # return render_template('employee.html', form=form_response)
+        flash("Employee Has Been Added Successfully", "success")
+        #return render_template('employee.html', form=form_response)
         return redirect(url_for('employee'))
     else:
         print(form_response.validate())
@@ -503,35 +504,9 @@ def insert():
     print(8)
     # redirect(url_for('employee.html'))
     print(9)
-    flash("you are now registered", "success")
 
 
-# class data(db.model):
-#     employee_name=db.column(db.String(100))
-#     email=db.column(db.String(100))
-#     phone_number=db.column(db.number(100))
-#
-#     def __init__(self,employee_name,email,phone_number):
-#         self.employee_name=employee_name
-#         self.email = email
-#         self.phone_number = phone_number
-# @app.route('/employee')
-# def employee():
-#     return render_template('employee.html')
-#
-# @app.route('/insert',  methods=['POST'])
-# def insert():
-#
-#     if request.method == 'POST' :
-#         EMPLOYEE_NAME = request.form['employee_name']
-#         EMAIL=request.form['EMAIL']
-#         PHONE_NUMBER=request.form['PHONE_NUMBER']
-#
-#
-#         mydata = data(EMPLOYEE_NAME,EMAIL,PHONE_NUMBER)
-#         db.session.add(mydata)
-#         db.session.commit()
-#         return redirect(url_for('employee.html'))
+
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
