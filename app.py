@@ -1,8 +1,9 @@
 # from tkinter import INSERT
 # from email.policy import default
 # import default as default
+import cv2
 import app as app
-from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory,flash
+from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory,flash,Response
 from flask_datepicker import datepicker
 from wtforms.fields.html5 import DateField
 # from data import Articles
@@ -21,6 +22,7 @@ con = cx_Oracle.connect('doner/doner@localhost/Orcl')
 
 
 
+
 #con = cx_Oracle.connect('oriondb/o@118.67.215.114/Orcl')
 
 
@@ -30,6 +32,8 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 print(APP_ROOT)
 
 app = Flask(__name__)
+#Python web streaming code
+camera=cv2.VideoCapture(0)
 # first Articles is the name of variables and second is the created function name Articles()
 app.config['UPLOAD_FOLDER'] = APP_ROOT
 # Configure Email
@@ -46,6 +50,7 @@ app.config.update(
 )
 
 mail = Mail(app)
+
 
 
 # Register Form Class
@@ -506,6 +511,35 @@ def insert():
     print(9)
 
 
+#Python web streaming code
+def generate_frames():
+    while True:
+
+        ## read the camera frame
+        success, frame = camera.read()
+        if not success:
+            break
+        else:
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+
+
+
+@app.route('/VideoStreaming')
+def VideoStreaming():
+    return render_template('VideoStreaming.html')
+
+
+@app.route('/video')
+def video():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+##End Web Streaming code ##
 
 
 if __name__ == '__main__':
