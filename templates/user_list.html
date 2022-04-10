@@ -5,8 +5,6 @@
 
 
 <style>
-
-
     body {
 <!--    background-image:url({{url_for('static',filename='onecolor.jpg')}});-->
      background-color: coral;
@@ -16,7 +14,6 @@
 
     .table table-striped{
      margin-top: 25px;}
-
 </style>
 
 
@@ -29,9 +26,9 @@
         <th>Blood Group</th>
         <th> Phone</th>
         <th> Last Date</th>
-
-
     </tr>
+
+
     {% for user in users %}
     <td>{{user[0]}}</td>
     <td>{{user[1]}}</td>

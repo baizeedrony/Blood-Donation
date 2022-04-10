@@ -18,24 +18,23 @@ from flask_mail import Mail, Message
 import cx_Oracle
 import os
 con = cx_Oracle.connect('doner/doner@localhost/Orcl')
-
-
-
-
-
 #con = cx_Oracle.connect('oriondb/o@118.67.215.114/Orcl')
 
 
-print(con.version)
+#print(con.version)
 
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-print(APP_ROOT)
+APP_ROOT = os.path.dirname(os.path.abspath(__file__)) ##It is store the image in the pycharm enginee.
+
+#APP_ROOT='E:\image' #this path store the image in desktop E image folder;
+#print(APP_ROOT)
+#print(1111)
 
 app = Flask(__name__)
 #Python web streaming code
 camera=cv2.VideoCapture(0)
 # first Articles is the name of variables and second is the created function name Articles()
 app.config['UPLOAD_FOLDER'] = APP_ROOT
+print(APP_ROOT)
 # Configure Email
 app.config.update(
     dict(
@@ -352,6 +351,15 @@ def upload():
             return render_template('upload.html')
         filename = request.files['file']
         filename.save(os.path.join(target, filename.filename))
+
+
+##for uploading image url in database this code
+        cur = con.cursor()
+        cur.execute("insert into image_load(  image_url)VALUES (\'{}\')".
+                    format( filename.filename))
+        con.commit()
+# End code
+
         flash('file uploaded successfully')
 
         return render_template('upload.html',image_name=filename)
@@ -411,7 +419,7 @@ def send_image(filename):
 class SearchForm(Form):
     choices = [('bloodgroup','bloodgroup')]
     select=SelectField('Search For Blood', choices=choices)
-    search = SelectField('search', choices=[('AB+', 'AB+'), ('B+', 'B+')])
+    search = SelectField('search', choices=[('AB+', 'AB+'), ('B+', 'B+'),('A+', 'A+')])
     # search=StringField('')
 
 
@@ -540,6 +548,12 @@ def video():
 
 
 ##End Web Streaming code ##
+
+
+
+## Start coading the image url upload in the database and image in the local folder ##
+
+
 
 
 if __name__ == '__main__':

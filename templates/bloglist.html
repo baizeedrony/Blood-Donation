@@ -4,95 +4,104 @@
 body{
 background-color:#e6f2ff;
 }
+
 </style>
 <div class="jumbotron"
 
-         style="background-image: url({{url_for('static',filename='100.jpg')}});">
-         <h1>Oracle APEX Blogs</h1>
-         <h2 class="subheading"></h2>
-         <span class="meta">
+     style="background-image: url({{url_for('static',filename='100.jpg')}});">
+    <h1>Oracle APEX Blogs</h1>
+    <h2 class="subheading"></h2>
+    <span class="meta">
                 Posted by
                 <a href="#!">Start Blog</a>
                 on August 24, 2022
          </span>
     </header>
 </div>
-    <div class="jumbotron">
-        <div class="">
-            <div class="card-group">
-                <div class="card"> <!--  left card  -->
-                    <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
-<!--                        <img class="card-img-top" src="..." alt="Card image cap">-->
-                        <div class="card-body">
-                            {% for onses in onse %}
-                            <td>
-                                <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a>
-                            </td>
-                            </tr>
-                            <p class="card-text">{{onses[1]}}</p>
-                            <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
-                            </tr>
-                                {% endfor %}
-                        </div>
+<div class="rh06w1 cwidth">
+    <div class="">
+        <div class="card-group">
+            <div class="card"> <!--  left card  -->
+                <img class="card-img-top"
+                     style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
+                <!--                        <img class="card-img-top" src="..." alt="Card image cap">-->
+                <div class="card-body">
+                    {% for onses in onse %}
+                    <td>
+                        <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a>
+                    </td>
+                    </tr>
+                    <p class="card-text">{{onses[1]}}</p>
+                    <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
+                    </tr>
+                    {% endfor %}
                 </div>
+            </div>
 
 
             <!--  Right card  -->
             <div class="card">
-                <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
-<!--                <img class="card-img-top" src="..." alt="Card image cap">-->
-                    <div class="card-body">
-                        {% for bloglist in bloglists %}
+                <img class="card-img-top"
+                     style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:50px;width:50px">
+                <!--                <img class="card-img-top" src="..." alt="Card image cap">-->
+                <div class="card-body">
+                    {% for bloglist in bloglists %}
 
-                            <td> <a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For Details</a> </td>
-                            </tr>
+                    <td><a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For
+                        Details</a></td>
+                    </tr>
 
-                                <p class="card-text">{{bloglist[1]}}</p>
-                                <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
-                            </tr>
-                        {% endfor %}
-                    </div>
+                    <p class="card-text" style="font-size: 15px;">{{bloglist[1]}}</p>
+                    <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
+                    </tr>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-    <div class="jumbotron">
+</div>
+<div class="jumbotron">
 
-        <div class="card-deck">
-            <div class="card">
-                        <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                          <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                          <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img class="card-img-top" style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:302px">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                          <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                      </div>
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top"
+                 style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:308px">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 5 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                 style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:308px">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 4 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top"
+                 style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:308px">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
         </div>
     </div>
-        </div>
-    </div>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}
 
