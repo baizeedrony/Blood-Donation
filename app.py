@@ -219,6 +219,7 @@ class ArticleForm(Form):
     title = StringField('title', [validators.Length(min=4, max=50)])
     body = TextAreaField('body', [validators.Length(min=4)])
     author = StringField('author')
+    file_name = StringField('file_name')
 
 
 # add article
@@ -226,16 +227,35 @@ class ArticleForm(Form):
 @is_logged_in
 def add_article():
     form = ArticleForm(request.form)
+    ##This code will generate the image path and strore the image ##
     if request.method == 'POST' and form.validate():
+        target = os.path.join(APP_ROOT, 'images')
+        if not os.path.isdir(target):
+            os.mkdir(target)
+        if 'file' not in request.files:
+            flash("No file")
+            return render_template('upload.html')
+        filename = request.files['file']
+
+        print(request.files)
+        print(111111111)
+
+        filename.save(os.path.join(target, filename.filename))
+        print(filename.filename)
+        print(33333333)
+
+        ##end code##
         title = form.title.data
         body = form.body.data
         author = session['username']
+        file_name=filename.filename  ##
+
 
 
 # create cursor
         cur = con.cursor()
-        cur.execute("insert into articles(title,body,author)VALUES (\'{}\',\'{}\',\'{}\')".
-                    format(title, body, author))
+        cur.execute("insert into articles(title,body,author,file_name)VALUES (\'{}\',\'{}\',\'{}\',\'{}\')".
+                    format(title, body, author,file_name))
         con.commit()
 
         flash("Articles created successfully")
