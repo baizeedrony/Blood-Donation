@@ -3,13 +3,35 @@
 <style>
 body{
 background-color:#e6f2ff;
+
 }
+.card-img-top{
+height:175px;
+width:500px;
+padding-left:20px;
+padding-right:10px;
+justify-content: center;
+
+}
+
+
+
+height:175px;
+width:500px;
+padding-left:20px;
+padding-right:10px;
+justify-content: center;
+
+}
+.h1 {
+    color: white;
+  } 
 
 </style>
 <div class="jumbotron"
 
      style="background-image: url({{url_for('static',filename='100.jpg')}});">
-    <h1>Oracle APEX Blogs</h1>
+    <h1 >Oracle APEX Blogs</h1>
     <h2 class="subheading"></h2>
     <span class="meta">
                 Posted by
@@ -22,11 +44,12 @@ background-color:#e6f2ff;
     <div class="">
         <div class="card-group">
             <div class="card"> <!--  left card  -->
-                <img class="card-img-top"
-                     style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:289px;width:200px">
-                <!--                        <img class="card-img-top" src="..." alt="Card image cap">-->
-                <div class="card-body">
+
+                <div class="card">
                     {% for onses in onse %}
+                    <img class="card-img-top2"
+                    src="{{url_for('static',filename=onses[6])}}">
+
                     <td>
                         <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a>
                     </td>
@@ -41,11 +64,13 @@ background-color:#e6f2ff;
 
             <!--  Right card  -->
             <div class="card">
-                <img class="card-img-top"
-                     style="background-image:url({{url_for('static',filename='ttt.jpg')}});height:50px;width:50px">
+
+                    {% for bloglist in bloglists %}
+
+                 <img class="card-img-top"
+                     src="{{url_for('static',filename=bloglist[6])}}">
                 <!--                <img class="card-img-top" src="..." alt="Card image cap">-->
                 <div class="card-body">
-                    {% for bloglist in bloglists %}
 
                     <td><a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For
                         Details</a></td>

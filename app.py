@@ -229,7 +229,7 @@ def add_article():
     form = ArticleForm(request.form)
     ##This code will generate the image path and strore the image ##
     if request.method == 'POST' and form.validate():
-        target = os.path.join(APP_ROOT, 'images')
+        target = os.path.join(APP_ROOT, 'static')
         if not os.path.isdir(target):
             os.mkdir(target)
         if 'file' not in request.files:
@@ -472,24 +472,49 @@ def search_results(search):
 # Blog list
 @app.route('/bloglist')
 def bloglist():
+
+    article_image_names = os.listdir('./images')
+
+
     # for  right side div function
     cur = con.cursor()
-    results = cur.execute(''' select *from articles''')
+    results = cur.execute(''' select *from ARTICLE_2''')
+
+
     allblog = cur.fetchall()
+
+
+
+
+
     # end right side div function
 
 # for left side div function
     cur = con.cursor()
-    oneresult = cur.execute('''select *from article''')
+    oneresult = cur.execute('''select * from article''')
     onse = cur.fetchall()
 
+    # cur.execute('''select file_name from article''')
+    # onseimage = cur.fetchall()
+    # print(onseimage)
+    # print(1111111111111111)
+    # print(article_image_names)
 
-# end left side
+
+
+
+    # if article_image_names == onseimage:
+    #     finalimage=article_image_names
+    # else:
+    #     return 'No results found!ha ha ha'
+
+    # end left side
     if results.rowcount > 0 or oneresult.rowcount > 0:
-        return render_template('bloglist.html', bloglists=allblog,onse=onse)
+        return render_template('bloglist.html', bloglists=allblog,onse=onse,finalimage=article_image_names)
     else:
         msg = ('no data found')
         return render_template('bloglist.html', msg=msg)
+
 
 
 # Flask Crud application full course
@@ -542,7 +567,6 @@ def insert():
 #Python web streaming code
 def generate_frames():
     while True:
-
         ## read the camera frame
         success, frame = camera.read()
         if not success:
@@ -554,20 +578,16 @@ def generate_frames():
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-
-
-
 @app.route('/VideoStreaming')
 def VideoStreaming():
     return render_template('VideoStreaming.html')
-
 
 @app.route('/video')
 def video():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-##End Web Streaming code ##
+## End Web Streaming code ##
 
 
 
