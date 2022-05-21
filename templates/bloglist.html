@@ -3,34 +3,43 @@
 <style>
 body{
 background-color:#e6f2ff;
-
 }
+
+
 .card-img-top{
 height:175px;
-width:500px;
-padding-left:20px;
+width:400px;
+padding-top:48px;
+padding-left:48px;
 padding-right:10px;
-justify-content: center;
+padding-bottom:10px;
 
+justify-content: center;
 }
 
 
-
-height:175px;
-width:500px;
-padding-left:20px;
-padding-right:10px;
+.card-img-top2{
+height:650px;
+width:550px;
+padding-top:48px;
+padding-left:48px;
+padding-right:48px;
+padding-bottom:48px;
 justify-content: center;
+transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .h1 {
     color: white;
-  } 
+  }
+
+
+
 
 </style>
 <div class="jumbotron"
 
-     style="background-image: url({{url_for('static',filename='100.jpg')}});">
+     style="background-image: url({{url_for('static',filename='2.jpg')}});">
     <h1 >Oracle APEX Blogs</h1>
     <h2 class="subheading"></h2>
     <span class="meta">
@@ -51,11 +60,11 @@ justify-content: center;
                     src="{{url_for('static',filename=onses[6])}}">
 
                     <td>
-                        <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right"> Click For Details</a>
+                        <a href="details_article/{{onses[0]}}" class="btn btn-default pull-right" > Click For Details</a>
                     </td>
                     </tr>
-                    <p class="card-text">{{onses[1]}}</p>
-                    <p class="card-text"><small class="text-muted">{{onses[2]}}</small></p>
+                    <p class="card-text" style="padding-left:10px;">{{onses[1]}}</p>
+                    <p class="card-text" style="padding-left:10px;"><small class="text-muted">{{onses[2]}}</small></p>
                     </tr>
                     {% endfor %}
                 </div>
@@ -64,23 +73,29 @@ justify-content: center;
 
             <!--  Right card  -->
             <div class="card">
+<!--                <div class="card-body">-->
+                     <div class="blogtitle-inner">
 
                     {% for bloglist in bloglists %}
 
+                        <div class="blogtitle-w1">
                  <img class="card-img-top"
                      src="{{url_for('static',filename=bloglist[6])}}">
                 <!--                <img class="card-img-top" src="..." alt="Card image cap">-->
-                <div class="card-body">
+                         </div>
+                            <div class="blogtitle-w2">
 
-                    <td><a href="details_article/{{bloglist[0]}}" class="btn btn-default pull-right"> Click For
+                    <td><a href="details_article/{{bloglist[0]}}" > Click For
                         Details</a></td>
                     </tr>
 
                     <p class="card-text" style="font-size: 15px;">{{bloglist[1]}}</p>
                     <p class="card-text"><small class="text-muted">{{bloglist[2]}}</small></p>
                     </tr>
+                              </div>
                     {% endfor %}
-                </div>
+                        </div>
+<!--                </div>-->
             </div>
         </div>
     </div>
