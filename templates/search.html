@@ -1,41 +1,35 @@
 {% extends 'layout.html' %}
 {% block body %}
+<style>
+    label {
+        visibility: hidden;
+    }
+</style>
 
-<doctype html>
+<div class="main"
+     style="position: relative; background-color: #87CEEB; width: 100%; height: auto; margin-top: 5px; text-align: center; padding: 100px;">
+    <h2 style="font-weight: bold; color: black;">Search Your Desired Blood Group</h2>
 
-    <div style="background-color:green; position:relative;width :100%;height:210px;margin:auto;text-align:center;padding:100px">
-
-
-        <title style="font-weight: bold;"> Search Your Desired Blood Group </title>
-        </head>
-
-        <h2 style="font-weight: bold;"> Search Your Desired Blood Group</h2>
-
-        {% with messages = get_flashed_messages() %}
+    <!-- Uncomment this section if you want to display flashed messages -->
+    <!--
+    {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul class=flashes>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+            <ul class="flashes" style="list-style-type: none; padding: 0;">
+                {% for message in messages %}
+                    <li style="color: red; font-weight: bold;">{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% endif %}
-        {% endwith %}
+    {% endwith %}
+    -->
 
-        {% from "includes/_formhelpers.html" import render_field %}
-        <form method="post">
-            <dl>
-                {{ render_field(form.select) }}
-                {{ render_field(form.search) }}
-                <input type="submit" value="search">
-            </dl>
-        </form>
-
-        <div id="child" style="position:relative;width :100%;height:210px;margin:auto">
-
-
-        </div>
-
-
-</doctype>
-
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form method="post">
+        <dl>
+            {{ render_field(form.select) }}
+            {{ render_field(form.search) }}
+            <input type="submit" value="Search">
+        </dl>
+    </form>
+</div>
 {% endblock %}

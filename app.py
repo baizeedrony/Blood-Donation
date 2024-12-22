@@ -1,10 +1,10 @@
 # from tkinter import INSERT
 # from email.policy import default
 # import default as default
-import cv2
+#import cv2
 import app as app
 from flask import Flask, render_template, flash, request, redirect, url_for, session, logging, send_from_directory,flash,Response
-from flask_datepicker import datepicker
+#from flask_datepicker import datepicker
 from wtforms.fields.html5 import DateField
 # from data import Articles
 # Articles=Articles()
@@ -17,7 +17,8 @@ from functools import wraps
 from flask_mail import Mail, Message
 import cx_Oracle
 import os
-con = cx_Oracle.connect('doner/doner@localhost/Orcl')
+con = cx_Oracle.connect('doner/doner@//localhost:1521/orclpdb')
+#con = cx_Oracle.connect('doner/doner@localhost/Orcl')
 #con = cx_Oracle.connect('oriondb/o@118.67.215.114/Orcl')
 
 
@@ -31,7 +32,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__)) ##It is store the image in
 
 app = Flask(__name__)
 #Python web streaming code
-camera=cv2.VideoCapture(0)
+#camera=cv2.VideoCapture(0)
 # first Articles is the name of variables and second is the created function name Articles()
 app.config['UPLOAD_FOLDER'] = APP_ROOT
 print(APP_ROOT)
